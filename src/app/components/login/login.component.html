@@ -1,0 +1,25 @@
+<h2>Inicie sesión</h2>
+
+<br>
+<form [formGroup]="formularioInicioSesion" (ngSubmit)="formularioEnviado()">
+
+    <label>Introduzca el correo o el nombre de usuario</label>
+    <br>
+    <input formControlName="nombre">
+    <br>
+
+    <label>Introduzca la contraseña</label>
+    <br>
+    <input formControlName="contrasenya">
+    <br>
+
+    <button>Iniciar sesión</button>
+
+</form> 
+
+<p *ngIf="nombreVacio">Introduzca un correo o nombre de usuario</p>
+<p *ngIf="contrasenyaVacia">Introduzca una contraseña</p>
+<p *ngIf="inicioSesionIncorrecto">Correo, nombre de usuario o contraseña incorrectas</p>
+
+
+
