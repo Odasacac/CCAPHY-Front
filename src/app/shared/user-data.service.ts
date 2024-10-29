@@ -12,6 +12,7 @@ export class UserDataService
   private usuarioInicial: UsuarioRespuestaLogin =
   {
       nombre: "",
+      codigo: "",
       rol: 0
   }
 
