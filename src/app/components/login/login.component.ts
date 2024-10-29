@@ -65,15 +65,17 @@ export class LoginComponent
           contrasenya: this.formularioInicioSesion.value.contrasenya
         };
 
-       
-        this.userService.hacerLogin(usuarioParaLogin).subscribe((inicioSesion: UsuarioRespuestaLogin) =>
+       console.log(usuarioParaLogin)
+        this.userService.hacerLogin(usuarioParaLogin).subscribe(inicioSesion=>
         {
-          if (inicioSesion)
+          console.log(inicioSesion)
+          if (inicioSesion.empleadoLogueado)
           {
             //Ir a dashboard
             this.router.navigate(['/dashboard']);
-            //Actualizar los datos del usuario en el
-            this.userData.setUsuario(inicioSesion);
+            //Actualizar los datos del usuario en el user-data
+            
+            this.userData.setUsuario(inicioSesion.values);
           }
           else
           {
