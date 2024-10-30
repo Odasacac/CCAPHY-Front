@@ -1,4 +1,4 @@
-export interface UsuarioLogin 
+export interface EmpleadoParaLogin 
 {  
     nombre: string;
     contrasenya: string;

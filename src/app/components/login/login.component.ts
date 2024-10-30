@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { UsuarioLogin } from '../../interfaces/usuario-login';
-import { UsersService } from '../../services/users.service';
-import { UsuarioRespuestaLogin } from '../../interfaces/respuesta-login';
-import { UserDataService } from '../../shared/user-data.service';
+
+import { EmpleadoRespuestaLogin } from '../../interfaces/respuesta-login';
 import { Router } from '@angular/router';
+import { EmpleadoDataService } from '../../shared/empleado-data.service';
+import { EmpleadosService } from '../../services/empleados.service';
+import { EmpleadoParaLogin } from '../../interfaces/empleado-login';
 
 @Component({
   selector: 'app-login',
@@ -23,9 +24,9 @@ export class LoginComponent
   public contrasenyaVacia: boolean = false;
 
   public inicioSesionIncorrecto: boolean = false;
-  private userService = inject(UsersService);
+  private userService = inject(EmpleadosService);
 
-  private userData = inject(UserDataService)
+  private userData = inject(EmpleadoDataService)
   private router = inject(Router);
 
 
@@ -59,29 +60,49 @@ export class LoginComponent
     }
     else
     {
-        const usuarioParaLogin: UsuarioLogin =
+        const usuarioParaLogin: EmpleadoParaLogin =
         {
           nombre: this.formularioInicioSesion.value.nombre,
           contrasenya: this.formularioInicioSesion.value.contrasenya
         };
 
-       console.log(usuarioParaLogin)
-        this.userService.hacerLogin(usuarioParaLogin).subscribe(inicioSesion=>
+        const loginObserver = 
         {
-          console.log(inicioSesion)
-          if (inicioSesion.empleadoLogueado)
+          next: (respuesta:any) => 
+          {  
+            console.log(respuesta)
+            /*
+            if (!inicioSesion.empleadoLogueado)
+            {
+              this.inicioSesionIncorrecto=true;
+            }
+            else
+            {
+              //Actualizar los datos del usuario en el user-data
+              this.userData.setUsuario(inicioSesion.values);
+  
+              //Almacenar el JWT
+           
+  
+              //Ir a dashboard
+              this.router.navigate(['/dashboard']);
+            }
+              */
+          },
+          error: (err: any) => 
           {
-            //Ir a dashboard
-            this.router.navigate(['/dashboard']);
-            //Actualizar los datos del usuario en el user-data
-            
-            this.userData.setUsuario(inicioSesion.values);
-          }
-          else
+            console.log(err)
+          },
+          complete: () => 
           {
-            this.inicioSesionIncorrecto=true;
+            console.log('La petición para obtener el JWT ha finalizado.');
           }
-        });
+        };
+    
+    
+
+       console.log(usuarioParaLogin)
+        this.userService.hacerLogin(usuarioParaLogin).subscribe(loginObserver);
       
 
     }

@@ -1,6 +1,6 @@
-export interface UsuarioRespuestaLogin 
+export interface EmpleadoRespuestaLogin 
 {
+    empleadoId: number;
     nombre: string;
-    codigo: string;
-    rol: number;
+    rol: string;
 }
