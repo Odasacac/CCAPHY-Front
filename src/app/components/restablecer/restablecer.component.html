@@ -1,0 +1,22 @@
+<h2>Restablecer contraseña</h2>
+
+<br>
+<form [formGroup]="formularioRestablecerContrasenya" (ngSubmit)="formularioEnviado()">
+
+    <label>Introduzca el código de empleado</label>
+    <br>
+    <input formControlName="codigo">
+    <br>
+
+    <label>Introduzca la nueva contraseña</label>
+    <br>
+    <input formControlName="contrasenya">
+    <br>
+
+    <button>Restablecer contraseña</button>
+
+</form> 
+
+<p *ngIf="codigoVacio">Introduzca el código de empleado</p>
+<p *ngIf="contrasenyaVacia">Introduzca la nueva contraseña</p>
+<a routerLink="/login">Volver a login</a>

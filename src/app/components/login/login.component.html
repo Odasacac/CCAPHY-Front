@@ -1,4 +1,4 @@
-<h2>Inicie sesión</h2>
+<h2>Iniciar sesión</h2>
 
 <br>
 <form [formGroup]="formularioInicioSesion" (ngSubmit)="formularioEnviado()">
@@ -20,6 +20,8 @@
 <p *ngIf="nombreVacio">Introduzca un correo o nombre de usuario</p>
 <p *ngIf="contrasenyaVacia">Introduzca una contraseña</p>
 <p *ngIf="inicioSesionIncorrecto">Correo, nombre de usuario o contraseña incorrectas</p>
+
+<a routerLink="/restablecer">Restablecer Contraseña</a>
 
 
 

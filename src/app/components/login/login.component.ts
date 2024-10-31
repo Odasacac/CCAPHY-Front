@@ -3,7 +3,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 import { EmpleadoRespuestaLogin } from '../../interfaces/respuesta-login';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { EmpleadoDataService } from '../../shared/empleado-data.service';
 import { EmpleadosService } from '../../services/empleados.service';
 import { EmpleadoParaLogin } from '../../interfaces/empleado-login';
@@ -11,7 +11,7 @@ import { EmpleadoParaLogin } from '../../interfaces/empleado-login';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -54,7 +54,7 @@ export class LoginComponent
     {
         this.nombreVacio=true;
     }
-    else if (this.formularioInicioSesion.value.contrasenya === "")
+    if (this.formularioInicioSesion.value.contrasenya === "")
     {
       this.contrasenyaVacia=true;
     }
@@ -70,7 +70,14 @@ export class LoginComponent
         {
           next: (respuesta:any) => 
           {  
-            console.log(respuesta)
+            if (respuesta.empleadoLogueado === null)
+            {
+              console.log("Error al login")
+            }
+            else
+            {
+              console.log("Login correcto")
+            }
             /*
             if (!inicioSesion.empleadoLogueado)
             {
