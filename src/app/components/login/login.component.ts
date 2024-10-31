@@ -44,77 +44,51 @@ export class LoginComponent
     });
   }
 
-  formularioEnviado()
+  formularioEnviado() 
   {
-    this.nombreVacio=false;
-    this.contrasenyaVacia=false;
-    this.inicioSesionIncorrecto=false;
+    this.nombreVacio = false;
+    this.contrasenyaVacia = false;
 
-    if (this.formularioInicioSesion.value.nombre === "")
-    {
-        this.nombreVacio=true;
-    }
-    if (this.formularioInicioSesion.value.contrasenya === "")
-    {
-      this.contrasenyaVacia=true;
-    }
-    else
-    {
-        const usuarioParaLogin: EmpleadoParaLogin =
-        {
-          nombre: this.formularioInicioSesion.value.nombre,
-          contrasenya: this.formularioInicioSesion.value.contrasenya
-        };
-
-        const loginObserver = 
-        {
-          next: (respuesta:any) => 
-          {  
-            if (respuesta.empleadoLogueado === null)
-            {
-              console.log("Error al login")
-            }
-            else
-            {
-              console.log("Login correcto")
-            }
-            /*
-            if (!inicioSesion.empleadoLogueado)
-            {
-              this.inicioSesionIncorrecto=true;
-            }
-            else
-            {
-              //Actualizar los datos del usuario en el user-data
-              this.userData.setUsuario(inicioSesion.values);
   
-              //Almacenar el JWT
-           
-  
-              //Ir a dashboard
-              this.router.navigate(['/dashboard']);
-            }
-              */
-          },
-          error: (err: any) => 
-          {
-            console.log(err)
-          },
-          complete: () => 
-          {
-            console.log('La petición para obtener el JWT ha finalizado.');
-          }
-        };
+    if (this.formularioInicioSesion.value.nombre === "") 
+    {
+      this.nombreVacio = true;
+    }
     
-    
+    if (this.formularioInicioSesion.value.contrasenya === "") 
+    {
+      this.contrasenyaVacia = true;
+    }
 
-       console.log(usuarioParaLogin)
-        this.userService.hacerLogin(usuarioParaLogin).subscribe(loginObserver);
+
+    if (!this.nombreVacio && !this.contrasenyaVacia) 
+    {
+      const usuarioParaLogin: EmpleadoParaLogin = 
+      {
+        nombre: this.formularioInicioSesion.value.nombre,
+        contrasenya: this.formularioInicioSesion.value.contrasenya
+      };
+
+      const loginObserver = 
+      {
+        next: (respuesta: any) => 
+        {
+                
+        },
+        error: (err: any) => 
+        {
+                
+        },
+        complete: () => 
+        {
+             
+        }
+      }
+
+      this.userService.hacerLogin(usuarioParaLogin).subscribe(loginObserver);
       
-
     }
   }
-
 
 
 

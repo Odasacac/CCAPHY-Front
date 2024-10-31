@@ -43,10 +43,12 @@ export class RestablecerComponent
     this.codigoVacio = false;
     this.contrasenyaVacia = false;
 
-    if (this.formularioRestablecerContrasenya.value.codigo === "") {
+    if (this.formularioRestablecerContrasenya.value.codigo === "") 
+    {
       this.codigoVacio = true;
     }
-    if (this.formularioRestablecerContrasenya.value.contrasenya === "") {
+    if (this.formularioRestablecerContrasenya.value.contrasenya === "") 
+    {
       this.contrasenyaVacia = true;
     }
 
