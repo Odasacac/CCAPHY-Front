@@ -1,12 +1,58 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, inject } from '@angular/core';
+import { EmpleadoRespuestaLogin } from '../../interfaces/respuesta-login';
+import { Subscription } from 'rxjs';
+import { EmpleadoDataService } from '../../shared/empleado-data.service';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-toolbar',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, RouterModule],
   templateUrl: './toolbar.component.html',
   styleUrl: './toolbar.component.css'
 })
-export class ToolbarComponent {
+export class ToolbarComponent 
+{
+  private datosEmpleado = inject(EmpleadoDataService);
+  private subscripcion: Subscription = new Subscription();
+  private router = inject(Router);
+
+  public nombre: string = "";
+
+
+  ngOnInit()
+  {
+    const empleadoObserver = 
+      {
+        next: (empleado: EmpleadoRespuestaLogin) =>
+        {
+          const empleadoObservado = this.datosEmpleado.getEmpleado();
+
+          this.nombre = empleadoObservado!.nombre;
+        },
+        error: (err: any) =>
+        {
+
+        },
+        complete: () =>
+        {
+
+        }
+      }
+
+      this.subscripcion=this.datosEmpleado.empleado$.subscribe(empleadoObserver);
+  }
+
+  ngOnDestroy()
+  {
+    this.subscripcion.unsubscribe();
+  }
+
+  logout ()
+  {
+    this.datosEmpleado.resetEmpleado();
+    this.router.navigate(['/login']); 
+  }
 
 }

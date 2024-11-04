@@ -9,27 +9,28 @@ import { BehaviorSubject } from 'rxjs';
 export class EmpleadoDataService 
 {
 
-  private usuarioInicial: EmpleadoRespuestaLogin =
+  private empleadoInicial: EmpleadoRespuestaLogin =
   {
       empleadoId: 0,
       nombre: "",
-      rol: ""
+      rol: "",
+      codigoEmpleado:"",
   }
 
-  private usuarioSubject = new BehaviorSubject<EmpleadoRespuestaLogin>(this.usuarioInicial);
-  usuario$ = this.usuarioSubject.asObservable();
+  private empleadoSubject = new BehaviorSubject<EmpleadoRespuestaLogin>(this.empleadoInicial);
+  empleado$ = this.empleadoSubject.asObservable();
 
-  setUsuario(usuario: EmpleadoRespuestaLogin) 
+  setEmpleado(usuario: EmpleadoRespuestaLogin) 
   {
-    this.usuarioSubject.next(usuario);
+    this.empleadoSubject.next(usuario);
   }
-  getUsuario(): EmpleadoRespuestaLogin | null 
+  getEmpleado(): EmpleadoRespuestaLogin | null 
   {
-    return this.usuarioSubject.value;
+    return this.empleadoSubject.value;
   }
-  resetUsuario()
+  resetEmpleado()
   {
-    this.setUsuario(this.usuarioInicial);
+    this.setEmpleado(this.empleadoInicial);
   }
 
 }

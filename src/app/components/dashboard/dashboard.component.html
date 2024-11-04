@@ -1,1 +1,14 @@
-<p>dashboard works!</p>
+<div *ngIf="!loginCorrecto">
+    <label>Accede con tus credenciales para visualizar las funcionalidades.</label>
+    <br>
+    <button (click)="goToLogIn()">Volver a Iniciar Sesión</button>
+</div>
+
+
+<div *ngIf="loginCorrecto">
+<app-toolbar></app-toolbar>
+
+<router-outlet></router-outlet>
+
+<app-footer></app-footer>
+</div>

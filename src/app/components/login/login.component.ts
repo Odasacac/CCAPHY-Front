@@ -48,6 +48,7 @@ export class LoginComponent
   {
     this.nombreVacio = false;
     this.contrasenyaVacia = false;
+    this.inicioSesionIncorrecto = false;
 
   
     if (this.formularioInicioSesion.value.nombre === "") 
@@ -73,15 +74,27 @@ export class LoginComponent
       {
         next: (respuesta: any) => 
         {
-          console.log("done")
+          if (respuesta.empleadoLogueado != null)
+          {
+              const empleadoLogueado: EmpleadoRespuestaLogin =
+              {
+                empleadoId: respuesta.empleadoLogueado.empleadoId,
+                nombre: respuesta.empleadoLogueado.nombre,
+                rol: respuesta.empleadoLogueado.rol,
+                codigoEmpleado: respuesta.empleadoLogueado.codigoEmpleado,
+              }
+
+              this.userData.setEmpleado(empleadoLogueado);
+
+              this.router.navigate(['/dashboard']); 
+          }
         },
         error: (err: any) => 
         {
-          console.log("error")
+          this.inicioSesionIncorrecto = true;
         },
         complete: () => 
         {
-          console.log("completed")
         }
       }
 
