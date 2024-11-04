@@ -73,15 +73,15 @@ export class LoginComponent
       {
         next: (respuesta: any) => 
         {
-                
+          console.log("done")
         },
         error: (err: any) => 
         {
-                
+          console.log("error")
         },
         complete: () => 
         {
-             
+          console.log("completed")
         }
       }
 

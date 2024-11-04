@@ -13,10 +13,16 @@
     <input formControlName="contrasenya">
     <br>
 
+    <label>Repita la nueva contraseña</label>
+    <br>
+    <input formControlName="contrasenyaR">
+    <br>
+
     <button>Restablecer contraseña</button>
 
 </form> 
 
 <p *ngIf="codigoVacio">Introduzca el código de empleado</p>
 <p *ngIf="contrasenyaVacia">Introduzca la nueva contraseña</p>
+<p *ngIf="contrasenyasNoCoinciden">Las contraseñas no coinciden</p>
 <a routerLink="/login">Volver a login</a>

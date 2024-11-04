@@ -17,4 +17,5 @@ export class EmpleadosService
     const endpoint = `${this.base_url}/empleados/login`
     return this.http.post<any>(endpoint, empleado);
   }
+
 }
