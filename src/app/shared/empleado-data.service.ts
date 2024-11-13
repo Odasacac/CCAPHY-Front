@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { EmpleadoRespuestaLogin } from '../interfaces/respuesta-login';
+import { EmpleadoRespuestaLogin } from '../interfaces/empleadoRespuestaLogin';
 import { BehaviorSubject } from 'rxjs';
 
 

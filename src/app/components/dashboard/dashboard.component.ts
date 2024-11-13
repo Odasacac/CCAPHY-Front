@@ -6,7 +6,7 @@ import { CorreoComponent } from '../correo/correo.component';
 import { Router, RouterModule } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { EmpleadoDataService } from '../../shared/empleado-data.service';
-import { EmpleadoRespuestaLogin } from '../../interfaces/respuesta-login';
+import { EmpleadoRespuestaLogin } from '../../interfaces/empleadoRespuestaLogin';
 import { CommonModule } from '@angular/common';
 
 @Component({

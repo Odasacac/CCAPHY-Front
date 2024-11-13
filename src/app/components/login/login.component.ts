@@ -2,14 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
-import { EmpleadoRespuestaLogin } from '../../interfaces/respuesta-login';
+import { EmpleadoRespuestaLogin } from '../../interfaces/empleadoRespuestaLogin';
 import { Router, RouterModule } from '@angular/router';
 import { EmpleadoDataService } from '../../shared/empleado-data.service';
 import { EmpleadosService } from '../../services/empleados.service';
-import { EmpleadoParaLogin } from '../../interfaces/empleado-login';
-import { MatFormField } from '@angular/material/form-field';
-import { MatInput } from '@angular/material/input';
-import { MaterialModule } from '../../others/material/material.module';
+import { EmpleadoParaLogin } from '../../interfaces/empleadoParaLogin';
 
 @Component({
   selector: 'app-login',
@@ -55,13 +52,14 @@ export class LoginComponent
     this.contrasenyaVacia = false;
     this.inicioSesionIncorrecto = false;
 
+    const datosFormulario = this.formularioInicioSesion.value;
   
-    if (this.formularioInicioSesion.value.nombre === "") 
+    if (datosFormulario.nombre === "") 
     {
       this.nombreVacio = true;
     }
     
-    if (this.formularioInicioSesion.value.contrasenya === "") 
+    if (datosFormulario.contrasenya === "") 
     {
       this.contrasenyaVacia = true;
     }
@@ -71,8 +69,8 @@ export class LoginComponent
     {
       const usuarioParaLogin: EmpleadoParaLogin = 
       {
-        nombre: this.formularioInicioSesion.value.nombre,
-        contrasenya: this.formularioInicioSesion.value.contrasenya
+        nombre: datosFormulario.nombre,
+        contrasenya: datosFormulario.contrasenya
       };
 
       const loginObserver = 

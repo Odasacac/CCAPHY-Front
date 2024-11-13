@@ -1,6 +1,6 @@
-import { EmpleadoParaRestablecer } from "./empleado-restablecer";
+import { EmpleadoParaRestablecer } from "./empleadoParaRestablecer";
 
-export interface Mensajes
+export interface Mensaje
 {
     asunto: string;
     contenido: string;

@@ -1,14 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { EmpleadoRespuestaLogin } from '../../interfaces/respuesta-login';
+import { EmpleadoRespuestaLogin } from '../../interfaces/empleadoRespuestaLogin';
 import { Subscription } from 'rxjs';
 import { EmpleadoDataService } from '../../shared/empleado-data.service';
 import { Router, RouterModule } from '@angular/router';
+import { MaterialModule } from '../../others/material/material.module';
 
 @Component({
   selector: 'app-toolbar',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, MaterialModule],
   templateUrl: './toolbar.component.html',
   styleUrl: './toolbar.component.css'
 })

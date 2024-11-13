@@ -4,6 +4,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RestablecerComponent } from './components/restablecer/restablecer.component';
 import { CalendarioComponent } from './components/calendario/calendario.component';
 import { CorreoComponent } from './components/correo/correo.component';
+import { PacientesComponent } from './components/pacientes/pacientes.component';
+import { AjustesComponent } from './components/ajustes/ajustes.component';
 
 export const routes: Routes = 
 [
@@ -13,6 +15,8 @@ export const routes: Routes =
         [
             { path: 'calendario', component: CalendarioComponent},
             { path: 'correo', component: CorreoComponent},
+            { path: 'pacientes', component: PacientesComponent},
+            { path: 'ajustes', component: AjustesComponent},
             { path: '', redirectTo: 'calendario', pathMatch: 'full' },
         ]
      },

@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { EmpleadoParaRestablecer } from '../../interfaces/empleado-restablecer';
+import { EmpleadoParaRestablecer } from '../../interfaces/empleadoParaRestablecer';
 import { MatDialog} from '@angular/material/dialog';  
 import { MensajesService } from '../../services/mensajes.service';
 import { PeticionRealizadaComponent } from '../../dialogs/peticion-realizada/peticion-realizada.component';
@@ -48,26 +48,28 @@ export class RestablecerComponent
     this.contrasenyaVacia = false;
     this.contrasenyasNoCoinciden = false;
 
-    if (this.formularioRestablecerContrasenya.value.codigo === "") 
+    const datosFormulario = this.formularioRestablecerContrasenya.value;
+
+    if (datosFormulario.codigo === "") 
     {
       this.codigoVacio = true;
     }
-    if (this.formularioRestablecerContrasenya.value.contrasenya === "" || this.formularioRestablecerContrasenya.value.contrasenyaR === "") 
+    if (datosFormulario.contrasenya === "" || datosFormulario.contrasenyaR === "") 
     {
       this.contrasenyaVacia = true;
     }
 
-    if (this.formularioRestablecerContrasenya.value.contrasenya != this.formularioRestablecerContrasenya.value.contrasenyaR)
+    if (datosFormulario.contrasenya != datosFormulario.contrasenyaR)
     {
       this.contrasenyasNoCoinciden = true;
     }
 
     if (!this.codigoVacio && !this.contrasenyaVacia && !this.contrasenyasNoCoinciden) 
     {
-      const mensajeParaAdmin: EmpleadoParaRestablecer = 
+      const datosParaMensaje: EmpleadoParaRestablecer = 
       {
-        codigoEmpleado: this.formularioRestablecerContrasenya.value.codigo,
-        contrasenya: this.formularioRestablecerContrasenya.value.contrasenya,
+        codigoEmpleado: datosFormulario.codigo,
+        contrasenya: datosFormulario.contrasenya,
       };
 
       const restablecerObserver = 
@@ -86,7 +88,7 @@ export class RestablecerComponent
         }
       }
 
-      this.mensajeService.restablecerContrasenya(mensajeParaAdmin).subscribe(restablecerObserver);
+      this.mensajeService.restablecerContrasenya(datosParaMensaje).subscribe(restablecerObserver);
 
       this.dialog.open(PeticionRealizadaComponent);
     }

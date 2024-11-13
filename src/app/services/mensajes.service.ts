@@ -1,8 +1,7 @@
 import { inject, Injectable } from '@angular/core';
-import { EmpleadoParaRestablecer } from '../interfaces/empleado-restablecer';
+import { EmpleadoParaRestablecer } from '../interfaces/empleadoParaRestablecer';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Mensajes } from '../interfaces/mensajes';
 
 @Injectable({
   providedIn: 'root'
