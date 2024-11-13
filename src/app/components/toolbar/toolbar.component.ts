@@ -27,13 +27,11 @@ export class ToolbarComponent
       {
         next: (empleado: EmpleadoRespuestaLogin) =>
         {
-          const empleadoObservado = this.datosEmpleado.getEmpleado();
-
-          this.nombre = empleadoObservado!.nombre;
+          this.nombre = empleado.nombre;
         },
         error: (err: any) =>
         {
-
+          
         },
         complete: () =>
         {
@@ -46,12 +44,16 @@ export class ToolbarComponent
 
   ngOnDestroy()
   {
-    this.subscripcion.unsubscribe();
+    if (this.subscripcion) 
+    {
+      this.subscripcion.unsubscribe();
+    }
   }
 
   logout ()
   {
     this.datosEmpleado.resetEmpleado();
+    localStorage.removeItem('jwtToken');
     this.router.navigate(['/login']); 
   }
 

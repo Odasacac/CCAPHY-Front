@@ -91,6 +91,8 @@ export class LoginComponent
 
               this.userData.setEmpleado(empleadoLogueado);
 
+              localStorage.setItem('jwtToken', respuesta.jwtToken)
+
               this.router.navigate(['/dashboard']); 
           }
         },

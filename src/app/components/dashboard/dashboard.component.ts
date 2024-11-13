@@ -30,7 +30,7 @@ export class DashboardComponent
       {
         next: (empleado: EmpleadoRespuestaLogin) =>
         {
-          const empleadoObservado = this.datosCompartidos.getEmpleado();
+          const empleadoObservado = empleado;
 
           if(empleadoObservado!.empleadoId != 0)
             {
