@@ -51,11 +51,32 @@ export class ToolbarComponent
     }
   }
 
-  logout ()
+  logout()
   {
     this.datosEmpleado.resetEmpleado();
     localStorage.removeItem('jwtToken');
     this.router.navigate(['/login']); 
   }
+
+  calendario()
+  {
+    this.router.navigate(['/dashboard/calendario']); 
+  }
+
+  correo()
+  {
+    this.router.navigate(['/dashboard/correo']); 
+  }
+
+  pacientes()
+  {
+    this.router.navigate(['/dashboard/pacientes']); 
+  }
+
+  ajustes()
+  {
+    this.router.navigate(['/dashboard/ajustes']); 
+  }
+
 
 }

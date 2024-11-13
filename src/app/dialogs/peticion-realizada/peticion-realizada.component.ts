@@ -13,10 +13,12 @@ import { Router } from '@angular/router';
 export class PeticionRealizadaComponent 
 {
   private dialogRef = inject(MatDialogRef)
+  private router = inject(Router);
 
   close():void
   {
     this.dialogRef.close();
+    this.router.navigate(['/login']); 
   }
 
 }
