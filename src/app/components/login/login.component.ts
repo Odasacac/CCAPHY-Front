@@ -24,6 +24,7 @@ export class LoginComponent
   public nombreVacio: boolean = false;
   public contrasenyaVacia: boolean = false;
   public excesoIntentos: boolean=false;
+  public contrasenyaCaducada: boolean=false;
 
   public inicioSesionIncorrecto: boolean = false;
   private userService = inject(EmpleadosService);
@@ -51,6 +52,7 @@ export class LoginComponent
     this.nombreVacio = false;
     this.contrasenyaVacia = false;
     this.inicioSesionIncorrecto = false;
+    this.contrasenyaCaducada=false;
 
     const datosFormulario = this.formularioInicioSesion.value;
   
@@ -96,16 +98,25 @@ export class LoginComponent
         },
         error: (err: any) => 
         {
-          this.inicioSesionIncorrecto = true;
 
-          this.numeroIntentos = this.numeroIntentos -1;
 
-          if (this.numeroIntentos == 0)
+
+          if (err.error.respuesta == "Contraseña caducada.")
           {
-            this.excesoIntentos=true;
-            this.inicioSesionIncorrecto=false;
+               this.contrasenyaCaducada=true;
           }
+          else
+          {
+            this.inicioSesionIncorrecto = true;
+            this.numeroIntentos = this.numeroIntentos -1;
 
+            if (this.numeroIntentos == 0)
+              {
+   
+                this.inicioSesionIncorrecto=false;
+              }
+    
+          }        
         },
         complete: () => 
         {

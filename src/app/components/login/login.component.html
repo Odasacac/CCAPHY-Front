@@ -13,12 +13,13 @@
     <input formControlName="contrasenya">
     <br>
 
-    <button [disabled]="excesoIntentos">Iniciar sesión</button>
+    <button [disabled]="excesoIntentos || contrasenyaCaducada">Iniciar sesión</button>
 
 </form> 
 
 <p *ngIf="nombreVacio">Introduzca un correo o un código de empleado.</p>
 <p *ngIf="contrasenyaVacia">Introduzca una contraseña.</p>
+<p *ngIf="contrasenyaCaducada">Contraseña caducada.</p>
 <p *ngIf="inicioSesionIncorrecto">Correo, código de empleado o contraseña incorrectos.</p>
 <p *ngIf="inicioSesionIncorrecto">Intentos restantes: {{numeroIntentos}}</p>
 <p *ngIf="excesoIntentos">Excedido el número de intentos, intente de nuevo más tarde.</p>
