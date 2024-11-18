@@ -21,10 +21,11 @@
 <p *ngIf="contrasenyaVacia">Introduzca una contraseña.</p>
 <p *ngIf="contrasenyaCaducada">Contraseña caducada.</p>
 <p *ngIf="inicioSesionIncorrecto">Correo, código de empleado o contraseña incorrectos.</p>
+<p *ngIf="usuarioInactivo">Usuario inactivo.</p>
 <p *ngIf="inicioSesionIncorrecto">Intentos restantes: {{numeroIntentos}}</p>
 <p *ngIf="excesoIntentos">Excedido el número de intentos, intente de nuevo más tarde.</p>
 
-<a routerLink="/restablecer">Restablecer Contraseña</a>
+<a routerLink="/restablecer">Restablecer contraseña</a>
 
 
 

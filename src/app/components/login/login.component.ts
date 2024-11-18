@@ -25,6 +25,7 @@ export class LoginComponent
   public contrasenyaVacia: boolean = false;
   public excesoIntentos: boolean=false;
   public contrasenyaCaducada: boolean=false;
+  public usuarioInactivo: boolean = false;
 
   public inicioSesionIncorrecto: boolean = false;
   private userService = inject(EmpleadosService);
@@ -104,6 +105,10 @@ export class LoginComponent
           if (err.error.respuesta == "Contraseña caducada.")
           {
                this.contrasenyaCaducada=true;
+          }
+          else if (err.error.respuesta == "Usuario no activo.")
+          {
+            this.usuarioInactivo=true;
           }
           else
           {
