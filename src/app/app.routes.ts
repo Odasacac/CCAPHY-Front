@@ -6,6 +6,7 @@ import { CalendarioComponent } from './components/calendario/calendario.componen
 import { CorreoComponent } from './components/correo/correo.component';
 import { PacientesComponent } from './components/pacientes/pacientes.component';
 import { AjustesComponent } from './components/ajustes/ajustes.component';
+import { EmpleadosComponent } from './components/empleados/empleados.component';
 
 export const routes: Routes = 
 [
@@ -17,6 +18,7 @@ export const routes: Routes =
             { path: 'correo', component: CorreoComponent},
             { path: 'pacientes', component: PacientesComponent},
             { path: 'ajustes', component: AjustesComponent},
+            { path: 'empleados', component: EmpleadosComponent},
             { path: '', redirectTo: 'calendario', pathMatch: 'full' },
         ]
      },

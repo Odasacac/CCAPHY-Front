@@ -18,6 +18,8 @@ export class ToolbarComponent
   private datosEmpleado = inject(EmpleadoDataService);
   private subscripcion: Subscription = new Subscription();
   private router = inject(Router);
+  public esResponsable =false;
+  public esAdmin =false;
 
   public nombre: string = "";
 
@@ -29,6 +31,16 @@ export class ToolbarComponent
         next: (empleado: EmpleadoRespuestaLogin) =>
         {
           this.nombre = empleado.nombre;
+
+
+          if (empleado.rol == 'RESPONSABLE')
+          {
+            this.esResponsable=true;
+          }
+          else if (empleado.rol == "ADMIN")
+          {
+            this.esAdmin=true;
+          }
         },
         error: (err: any) =>
         {
@@ -71,6 +83,11 @@ export class ToolbarComponent
   pacientes()
   {
     this.router.navigate(['/dashboard/pacientes']); 
+  }
+
+  empleados()
+  {
+    this.router.navigate(['/dashboard/empleados']); 
   }
 
   ajustes()

@@ -6,7 +6,9 @@
 
 <button (click)="correo()">Correo</button>
 
-<button (click)="pacientes()">Pacientes</button>
+<button (click)="pacientes()">Mis pacientes</button>
+
+<button *ngIf="esAdmin || esResponsable" (click)="empleados()">Mis empleados</button>
 
 <button (click)="ajustes()">Ajustes</button>
 
