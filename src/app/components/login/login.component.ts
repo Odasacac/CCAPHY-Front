@@ -92,7 +92,7 @@ export class LoginComponent
 
               this.userData.setEmpleado(empleadoLogueado);
 
-              localStorage.setItem('jwtToken', respuesta.jwtToken)
+              sessionStorage.setItem('jwtToken', respuesta.jwtToken)
 
               this.router.navigate(['/dashboard']); 
           }

@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { EmpleadoParaRestablecer } from '../../interfaces/empleadoParaRestablecer';
 import { MatDialog} from '@angular/material/dialog';  
 import { MensajesService } from '../../services/mensajes.service';
-import { PeticionRealizadaComponent } from '../../dialogs/peticion-realizada/peticion-realizada.component';
+import { DialogGeneralComponent } from '../../dialogs/dialog-general/dialog-general.component';
 
 @Component({
   selector: 'app-restablecer',
@@ -90,7 +90,7 @@ export class RestablecerComponent
 
       this.mensajeService.restablecerContrasenya(datosParaMensaje).subscribe(restablecerObserver);
 
-      this.dialog.open(PeticionRealizadaComponent);
+      this.dialog.open(DialogGeneralComponent, {data: {volverALogin:true, header: "Petición solicitada", body: "Se procesará lo antes posible."}});
     }
 
 

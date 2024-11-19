@@ -1,1 +1,22 @@
-<p>ajustes works!</p>
+<h2>Ajustes</h2>
+<button (click)="cambiarContrasenya()">Cambiar contraseña</button>
+<br> <br>
+
+<div *ngIf="esResponsable || esAdmin">
+    <button (click)="cambiarResponsableDePaciente()">Cambiar el responsable de un paciente</button>
+    <br> <br>
+</div>
+
+<div *ngIf="esAdmin">
+    <button (click)="crearEmpleado()">Crear empleado</button>
+    <br> <br>
+    <button (click)="restablecerContrasenya()">Restablecer contraseña de un empleado</button>
+    <br> <br>
+    <button (click)="modificarRolEmpleado()">Modificar rol de un empleado</button>
+    <br> <br>
+    <button (click)="modificarEstadoEmpleado()">Modificar estado de un empleado</button>
+    <br> <br>
+    <button (click)="cambiarResponsableDeEmpleado()">Cambiar el responsable de un empleado</button>
+    <br> <br>
+  </div>
+  

@@ -66,7 +66,7 @@ export class ToolbarComponent
   logout()
   {
     this.datosEmpleado.resetEmpleado();
-    localStorage.removeItem('jwtToken');
+    sessionStorage.removeItem('jwtToken');
     this.router.navigate(['/login']); 
   }
 
