@@ -17,7 +17,6 @@ import { CommonModule } from '@angular/common';
 export class CambioContrasenyaComponent 
 {
   private dialogRef = inject(MatDialogRef);
-  private router = inject(Router);
   private data = inject (MAT_DIALOG_DATA);
   private dialog = inject (MatDialog)
   public formularioCambiarContrasenya!: FormGroup;
@@ -41,10 +40,9 @@ export class CambioContrasenyaComponent
     });
   }
 
-  closeAjus():void
+  close():void
   {
     this.dialogRef.close();
-    this.router.navigate(['/dashboard/ajustes']); 
   }
 
   formularioEnviado()
@@ -76,20 +74,19 @@ export class CambioContrasenyaComponent
           next: (respuesta: any) => 
           {
             this.dialog.open(DialogGeneralComponent, {data: {volverAAjustes:true, header: "Operación realizada con éxito", body: "Los cambios ya se han efectuado."}});
-            this.closeAjus()
+            this.close()
           },
           error: (err: any) => 
           {
-            console.log(err)
             if (err.error.respuesta == "Contraseña anterior.")
             {
-              this.dialog.open(DialogGeneralComponent, {data: {volverAAjustes:true, header: "Error al procesar la operación", body: "La contraseña introducida es la actual."}});
-              this.closeAjus();
+              this.dialog.open(DialogGeneralComponent, {data: {volverAAjustes:true, header: "Petición incorrecta", body: "La contraseña introducida es la actual."}});
+              this.close();
             }
             else
             {
               this.dialog.open(DialogGeneralComponent, {data: {volverAAjustes:true, header: "Error al procesar la operación", body: "Ha ocurrido un error, contacte con ADMIN@CCAPHY.COM."}});
-              this.closeAjus();
+              this.close();
             }
            
         

@@ -92,16 +92,13 @@ export class LoginComponent
 
               this.userData.setEmpleado(empleadoLogueado);
 
-              sessionStorage.setItem('jwtToken', respuesta.jwtToken)
+              sessionStorage.setItem('jwt', respuesta.jwt)
 
               this.router.navigate(['/dashboard']); 
           }
         },
         error: (err: any) => 
         {
-
-
-
           if (err.error.respuesta == "Contraseña caducada.")
           {
                this.contrasenyaCaducada=true;
