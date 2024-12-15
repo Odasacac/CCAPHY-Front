@@ -5,6 +5,7 @@ import { EmpleadoRespuestaLogin } from '../../interfaces/empleadoRespuestaLogin'
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { CambioContrasenyaComponent } from '../../dialogs/cambio-contrasenya/cambio-contrasenya.component';
+import { CambioResponsabilidadesComponent } from '../../dialogs/cambio-responsabilidades/cambio-responsabilidades.component';
 
 @Component({
   selector: 'app-ajustes',
@@ -69,7 +70,7 @@ export class AjustesComponent
 
   cambiarResponsableDePaciente()
   {
-
+    this.dialog.open(CambioResponsabilidadesComponent, {data: {paciente: true}});
   }
 
   crearEmpleado()
@@ -94,7 +95,7 @@ export class AjustesComponent
 
   cambiarResponsableDeEmpleado()
   {
-
+    this.dialog.open(CambioResponsabilidadesComponent, {data: {empleado: true}});
   }
 
 

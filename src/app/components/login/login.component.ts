@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { EmpleadoRespuestaLogin } from '../../interfaces/empleadoRespuestaLogin';
 import { Router, RouterModule } from '@angular/router';
@@ -41,11 +41,13 @@ export class LoginComponent
 
   crearFormulario() 
   {
-    this.formularioInicioSesion = this.formBuilder.group(
+    const camposFormulario =
     {
-      nombre: [''],
-      contrasenya: ['']
-    });
+      nombre: new FormControl('', [Validators.required, Validators.minLength(2)]),
+      contrasenya : new FormControl('', [Validators.required]),
+    }
+
+    this.formularioInicioSesion = new FormGroup(camposFormulario);
   }
 
   formularioEnviado() 
